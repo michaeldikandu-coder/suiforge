@@ -1,10 +1,10 @@
 mod cli;
+mod codegen;
 mod commands;
 mod config;
 mod error;
 mod sui;
 mod templates;
-mod codegen;
 mod utils;
 
 use clap::Parser;
@@ -31,7 +31,11 @@ async fn run() -> Result<()> {
     let cli = Cli::parse();
 
     match cli.command {
-        Commands::Init { name, template, no_git } => {
+        Commands::Init {
+            name,
+            template,
+            no_git,
+        } => {
             commands::init::execute(name, template, no_git).await?;
         }
         Commands::Build { release, watch } => {
@@ -40,7 +44,11 @@ async fn run() -> Result<()> {
         Commands::Test { filter, coverage } => {
             commands::test::execute(filter, coverage).await?;
         }
-        Commands::Deploy { network, gas_budget, skip_verify } => {
+        Commands::Deploy {
+            network,
+            gas_budget,
+            skip_verify,
+        } => {
             commands::deploy::execute(network, gas_budget, skip_verify).await?;
         }
         Commands::Generate { target, output } => {

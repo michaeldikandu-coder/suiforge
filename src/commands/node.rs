@@ -20,9 +20,7 @@ async fn start_node() -> Result<()> {
 
     let spinner = utils::create_spinner("Initializing node...");
 
-    let output = Command::new("sui")
-        .args(["start", "--with-faucet"])
-        .spawn();
+    let output = Command::new("sui").args(["start", "--with-faucet"]).spawn();
 
     match output {
         Ok(_) => {
@@ -35,7 +33,10 @@ async fn start_node() -> Result<()> {
         }
         Err(e) => {
             spinner.finish_with_message("Failed to start node");
-            return Err(SuiForgeError::Custom(format!("Failed to start node: {}", e)));
+            return Err(SuiForgeError::Custom(format!(
+                "Failed to start node: {}",
+                e
+            )));
         }
     }
 

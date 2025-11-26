@@ -1,7 +1,7 @@
-pub mod init;
 pub mod build;
-pub mod test;
 pub mod deploy;
 pub mod generate;
-pub mod node;
+pub mod init;
 pub mod install;
+pub mod node;
+pub mod test;

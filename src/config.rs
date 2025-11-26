@@ -1,7 +1,7 @@
+use crate::error::{Result, SuiForgeError};
 use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::{Path, PathBuf};
-use crate::error::{Result, SuiForgeError};
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SuiForgeConfig {
@@ -116,13 +116,13 @@ impl SuiForgeConfig {
 
 pub fn find_project_root() -> Result<PathBuf> {
     let mut current = std::env::current_dir()?;
-    
+
     loop {
         let config_path = current.join("suiforge.config.json");
         if config_path.exists() {
             return Ok(current);
         }
-        
+
         if !current.pop() {
             return Err(SuiForgeError::NotInProject);
         }
