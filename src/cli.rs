@@ -76,7 +76,7 @@ pub enum Commands {
         action: String,
     },
 
-    /// Install Axion plugin
+    /// Install SuiForge plugin
     Install {
         /// Plugin name
         plugin: String,
