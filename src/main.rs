@@ -60,6 +60,37 @@ async fn run() -> Result<()> {
         Commands::Install { plugin } => {
             commands::install::execute(plugin).await?;
         }
+        Commands::Profile { action, name, rpc } => {
+            commands::profile::execute(action, name, rpc).await?;
+        }
+        Commands::Verify {
+            package_id,
+            network,
+        } => {
+            commands::verify::execute(package_id, network).await?;
+        }
+        Commands::Gas { action, function } => {
+            commands::gas::execute(action, function).await?;
+        }
+        Commands::Scan { level, format } => {
+            commands::scan::execute(level, format).await?;
+        }
+        Commands::Watch { test, deploy } => {
+            commands::watch::execute(test, deploy).await?;
+        }
+        Commands::Dashboard { port } => {
+            commands::dashboard::execute(port).await?;
+        }
+        Commands::Inspect {
+            object_id,
+            network,
+            format,
+        } => {
+            commands::inspect::execute(object_id, network, format).await?;
+        }
+        Commands::Coverage { format, output } => {
+            commands::coverage::execute(format, output).await?;
+        }
     }
 
     Ok(())

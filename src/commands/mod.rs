@@ -1,7 +1,15 @@
 pub mod build;
+pub mod coverage;
+pub mod dashboard;
 pub mod deploy;
+pub mod gas;
 pub mod generate;
 pub mod init;
+pub mod inspect;
 pub mod install;
 pub mod node;
+pub mod profile;
+pub mod scan;
 pub mod test;
+pub mod verify;
+pub mod watch;
