@@ -10,7 +10,11 @@ pub async fn execute(target: String, output: Option<String>) -> Result<()> {
 
     let output_dir = output.unwrap_or_else(|| {
         match target.as_str() {
-            "ts" => config.codegen.typescript.as_ref().map(|c| c.output_dir.clone()),
+            "ts" => config
+                .codegen
+                .typescript
+                .as_ref()
+                .map(|c| c.output_dir.clone()),
             "rust" => config.codegen.rust.as_ref().map(|c| c.output_dir.clone()),
             "swift" => config.codegen.swift.as_ref().map(|c| c.output_dir.clone()),
             _ => None,

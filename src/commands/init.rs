@@ -29,7 +29,10 @@ pub async fn execute(name: String, template: String, no_git: bool) -> Result<()>
         spinner.finish_with_message("Git repository initialized");
     }
 
-    utils::success(&format!("Project {} created successfully!", name.green().bold()));
+    utils::success(&format!(
+        "Project {} created successfully!",
+        name.green().bold()
+    ));
     println!();
     println!("Next steps:");
     println!("  cd {}", name);
@@ -124,10 +127,7 @@ suiforge deploy devnet
 }
 
 fn init_git(path: &Path) -> Result<()> {
-    Command::new("git")
-        .arg("init")
-        .current_dir(path)
-        .output()?;
+    Command::new("git").arg("init").current_dir(path).output()?;
 
     Command::new("git")
         .args(["add", "."])

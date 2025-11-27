@@ -11,7 +11,7 @@ pub async fn execute(network: String, gas_budget: Option<u64>, skip_verify: bool
     let config = load_config()?;
 
     // Validate network
-    let valid_networks = vec!["devnet", "testnet", "mainnet"];
+    let valid_networks = ["devnet", "testnet", "mainnet"];
     if !valid_networks.contains(&network.as_str()) {
         return Err(SuiForgeError::InvalidNetwork(network));
     }
@@ -41,7 +41,7 @@ pub async fn execute(network: String, gas_budget: Option<u64>, skip_verify: bool
         spinner.finish_with_message("Package published");
 
         let stdout = String::from_utf8_lossy(&output.stdout);
-        
+
         // Parse package ID from output (simplified)
         let package_id = extract_package_id(&stdout).unwrap_or_else(|| "0x...".to_string());
 

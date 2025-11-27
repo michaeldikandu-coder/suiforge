@@ -39,7 +39,7 @@ homepage = "https://github.com/YOUR_USERNAME/suiforge"
 - [ ] Version is correct (0.1.0)
 
 ### 3. Update Documentation
-
+   
 Update these files with your actual URLs:
 - [ ] README.md - Replace placeholder URLs
 - [ ] install.sh - Add your GitHub username
